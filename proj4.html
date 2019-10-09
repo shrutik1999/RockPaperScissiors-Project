@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>  </title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" type="text/css" href="proj4.css">
+    </head>
+
+    <body>
+    
+    <table>
+        <tr>
+            <th colspan="3">Rock Paper Scissors</th>
+        </tr>
+        <tr>
+            <td> <img onClick="playGame('rock');" src="rock.jpg" alt="rock"</td>
+            <td rowspan="3"> <img id="leftOnScreen" src="leftPaperHand.jpg" alt="lefttHand" /></td>
+            <td rowspan = "3"> <img id="rightOnScreen" src="rightRockHand.jpg" alt="rightHand" /></td>
+        </tr>
+        <tr>
+            <td> <img onClick="playGame('paper');" src="paper.jpg" alt="paper" /></td>
+        </tr>
+        <tr>
+            <td> <img onClick="playGame('scissors');" src="scissors.jpg" alt="scissors" /></td>
+        </tr>
+        <tr>
+            <th colspan="3">Wins: <span id="won">0</span> Losses: <span id="lost">0</span> Ties: <span id="tied">0</span></th>
+        </tr>
+    </table>
+    <script>
+        var wins = 0;
+        var losses = 0;
+        var ties = 0;
+        
+        function playGame(tool){
+            var randomComputer = Math.random();
+            if (tool === "rock"){
+                leftOnScreen.src = "leftRockHand.jpg";
+                computerAction (randomComputer, "rock");
+            }
+            if (tool === "paper"){
+                leftOnScreen.src = "leftPaperHand.jpg";
+                computerAction (randomComputer, "paper");
+            }
+            if (tool === "scissors"){
+                leftOnScreen.src = "leftScissorHand.jpg";
+                computerAction (randomComputer, "scissors");
+            }
+        }
+        
+        function computerAction(randomComputer, tool){
+            if (randomComputer<0.3333){
+                rightOnScreen.src = "rightRockHand.jpg";
+                opponentTool = "rock";
+                tallyScores (tool, "rock");
+            }
+            if (randomComputer>0.3333 && randomComputer<0.6666){
+                rightOnScreen.src = "rightPaperHand.jpg";
+                opponentTool  = "paper";
+                tallyScores (tool, "paper");
+            }
+            if (randomComputer>0.6666){
+                rightOnScreen.src = "rightScissorHand.jpg";
+                opponentTool = "scissors";
+                tallyScores (tool, "scissors");
+            }
+        }
+        
+        function tallyScores(tool, opponentTool){
+            if (tool === opponentTool){
+                ties = ties + 1;
+                tied.innerHTML = ties;
+            }
+            if (tool === "rock"){
+                if (opponentTool === "paper"){
+                    losses = losses + 1;
+                    lost.innerHTML = losses;
+                }
+                if (opponentTool === "scissors"){
+                    wins = wins + 1;
+                    won.innerHTML = wins;
+                }
+            }
+            if (tool === "paper"){
+                if (opponentTool === "rock"){
+                    wins = wins + 1;
+                    won.innerHTML = wins;
+                }
+                if (opponentTool === "scissors"){
+                    losses = losses + 1;
+                    lost.innerHTML = losses;
+                }
+            }
+            if (tool === "scissors"){
+                if (opponentTool === "rock"){
+                    losses = losses + 1;
+                    lost.innerHTML = losses;
+                }
+                if (opponentTool === "paper"){
+                    wins = wins + 1;
+                    won.innerHTML = wins;
+                }
+            }
+        }
+    
+    </script>
+    
+    </body>
+</html>

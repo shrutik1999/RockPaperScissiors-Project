@@ -1,0 +1,21 @@
+body{
+    margin: 100px;
+    background-color:green;
+    font-family: arial;
+}
+table{
+    margin: auto;
+    border: solid black 2px;
+    background-color: white;
+}
+#rightOnScreen, #leftOnScreen{
+    vertical-align: middle;
+}
+th{
+    font-size: 15pt;
+    border: solid black 1px;
+    padding: 40px;
+}
+td{
+    border: solid black 1px;
+}
